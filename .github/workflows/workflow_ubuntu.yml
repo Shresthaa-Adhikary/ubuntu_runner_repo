@@ -9,8 +9,10 @@ jobs:
       - name: checkout repository
         uses: actions/checkout@v4
       - name: build docker image
-        run: docker build -t pnodeapp .
+        run: docker build -t pnode .
       - name: run docker container
-        run: docker run -d  --name c1 pnodeapp
+        run: docker run -d --name c2 pnode /bin/bash
+      - name: print node version
+        run: echo "node --version"
       - name: stop container
         run: docker stop c1
