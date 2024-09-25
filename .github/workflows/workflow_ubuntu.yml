@@ -1,0 +1,16 @@
+name: print node version
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v4
+      - name: build docker image
+        run: docker build -t pnodeapp .
+      - name: run docker container
+        run: docker run -d  --name c1 pnodeapp
+      - name: stop container
+        run: docker stop c1
